@@ -26,7 +26,7 @@ def beamforming(RF_data, fs, c, pitch, Depth):
         for j in range(len(X)):
             x, z = X[j], Domain[i]
 
-            Tau_discrete = np.round(((z + np.sqrt((x - x1)**2 + z**2)) / c) * fs).astype(int) # Discretize the time
+            Tau_discrete = np.round(((z + np.sqrt((x - X_elts)**2 + z**2)) / c) * fs).astype(int) # Discretize the time
             contribution_indices = (Tau_discrete, np.arange(len(X_elts))) # Indices of the RF data that contribute to the imaging point
             
             S[i,j] = np.sum(RF_data[contribution_indices])
